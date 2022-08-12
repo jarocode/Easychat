@@ -11,8 +11,8 @@ const Input = (props) => {
         height={props.height}
         background={props.background}
         border={props.border}
-        outline={props.outline}
         radius={props.radius}
+        padding={props.padding}
       />
     </Container>
   );
@@ -23,10 +23,11 @@ export default Input;
 const Container = styled.div``;
 
 const StyledInput = styled.input`
-  width: ${(props) => props.width};
+  outline: none !important;
+  width: ${(props) => (props.width ? props.width : "100%")};
   height: ${(props) => props.height};
   background: ${(props) => props.background};
   border-radius: ${(props) => props.radius};
   border: ${(props) => props.border};
-  outline: ${(props) => props.outline};
+  padding: ${(props) => props.padding};
 `;

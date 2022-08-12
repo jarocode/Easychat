@@ -11,18 +11,40 @@ const index = () => {
   return (
     <MainLayout>
       <Container>
-        <Typography fontFamily={"Raleway"}>Welcome to EasyChats!</Typography>
+        <Typography
+          fontFamily={"Raleway"}
+          fontWeight="bold"
+          fontSize={"24px"}
+          color={color.brand1}
+          marginBottom={"2rem"}
+        >
+          Welcome to EasyChats!
+        </Typography>
         <Div>
-          <Typography fontFamily={"Raleway"}> Enter your username</Typography>
+          <Typography fontFamily={"Raleway"} color={color.grey}>
+            {" "}
+            Enter your username
+          </Typography>
           <Input
             height="3rem"
-            width="80%"
-            radius="8px"
+            width="30rem"
+            radius="1.5rem"
             border="none"
-            outline="none"
+            placeholder="John doe"
+            padding="0 1rem"
             background={color.brand2}
           />
-          <Button />
+          <Button
+            height="3rem"
+            width="32rem"
+            borderRadius="1.5rem"
+            bgColor={color.brand1}
+            btnText={
+              <Typography fontFamily={"Raleway"} fontWeight="bold">
+                Enter
+              </Typography>
+            }
+          />
         </Div>
       </Container>
     </MainLayout>
@@ -33,15 +55,17 @@ export default index;
 
 const Container = styled.div`
   width: 40%;
-  height: 30rem;
+  height: 20rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 `;
 const Div = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+  gap: 1rem;
   width: 100%;
   height: 100%;
   box-shadow: 0px 8px 13px rgba(0, 0, 0, 0.12);

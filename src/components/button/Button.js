@@ -78,6 +78,7 @@ const Btn = styled.button`
     margin: ${margin};
     padding: ${padding};
     text-transform: uppercase;
+    cursor: pointer;
     outline: none;
     transition: all 0.2s ease-in;
     &:hover{
