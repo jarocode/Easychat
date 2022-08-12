@@ -26,6 +26,6 @@ export const getTime = () => {
   let hours = dt.getHours();
   let minute = dt.getMinutes();
   hours = hours % 12 || 12;
-  minute = minute.toString().length == 2 ? minute : `0${minute}`;
+  minute = minute.toString().length === 2 ? minute : `0${minute}`;
   return `${hours}:${minute}pm `;
 };

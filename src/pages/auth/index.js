@@ -30,12 +30,12 @@ const Index = () => {
     setLoading(true);
 
     if (userName && userId) {
-      if (userName.toLowerCase() !== user.toLowerCase()) {
-        setLoading(false);
-        return toast("Incorrect username!");
+      if (userName.toLowerCase() === user.toLowerCase()) {
+        // setLoading(false);
+        // return toast("Incorrect username!");
+        dispatch(signIn({ userName, userId }));
       }
-
-      dispatch(signIn({ userName, userId }));
+      dispatch(signIn({ userName: user, userId: uuidv4() }));
     } else {
       dispatch(signIn({ userName: user, userId: uuidv4() }));
     }

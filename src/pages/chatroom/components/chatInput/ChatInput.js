@@ -11,14 +11,12 @@ import { getTime } from "utils";
 
 const ChatInput = () => {
   const [message, setMessage] = useState();
-  const { userId } = useSelector((state) => state.auth);
+  const { userId, userName } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-
-  console.log(getTime());
 
   const handleClick = () => {
     setMessage("");
-    dispatch(addChat({ id: userId, message, time: getTime() }));
+    dispatch(addChat({ id: userId, message, userName, time: getTime() }));
   };
 
   const handleChange = (e) => {
