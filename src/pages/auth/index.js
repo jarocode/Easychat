@@ -1,15 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Typography } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import MainLayout from "layout/MainLayout";
 import Input from "components/input/Input";
 import { color } from "theme";
 import Button from "components/button/Button";
+import { signIn } from "store/actions/auth";
 
-const index = () => {
+const Index = () => {
+  const [loading, setLoading] = useState();
+  const [user, setUser] = useState();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { userId, userName } = useSelector((state) => state.auth);
+
+  const handleChange = (e) => {
+    setUser(e.target.value);
+  };
+
+  const handleClick = () => {
+    setLoading(true);
+    if (userName && userId) {
+      if (userName.toLowerCase() !== user.toLowerCase())
+        return toast("you do not belong to this chat!");
+      dispatch(signIn({ userName, userId }));
+    } else {
+      dispatch(signIn({ userName: user, userId: uuidv4() }));
+    }
+    setTimeout(() => {
+      setLoading(false);
+      toast("Logged in Successfully!");
+    }, 2000);
+    setTimeout(() => {
+      navigate("./chatroom");
+    }, 4000);
+  };
   return (
     <MainLayout>
+      <ToastContainer limit={1} />
       <Container>
         <Typography
           fontFamily={"Raleway"}
@@ -31,6 +66,7 @@ const index = () => {
             radius="1.5rem"
             border="none"
             placeholder="John doe"
+            onChange={handleChange}
             padding="0 1rem"
             background={color.brand2}
           />
@@ -44,6 +80,7 @@ const index = () => {
                 Enter
               </Typography>
             }
+            onClick={handleClick}
           />
         </Div>
       </Container>
@@ -51,7 +88,7 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
 
 const Container = styled.div`
   width: 40%;
