@@ -20,6 +20,8 @@ export default Input;
 
 const StyledInput = styled.input`
   outline: none !important;
+  font-family: "Raleway";
+  font-size: 16px;
   width: ${(props) => (props.width ? props.width : "100%")};
   height: ${(props) => props.height};
   background: ${(props) => props.background};
