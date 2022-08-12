@@ -10,6 +10,8 @@ const Input = (props) => {
         width={props.width}
         height={props.height}
         background={props.background}
+        border={props.border}
+        outline={props.outline}
         radius={props.radius}
       />
     </Container>
@@ -25,4 +27,6 @@ const StyledInput = styled.input`
   height: ${(props) => props.height};
   background: ${(props) => props.background};
   border-radius: ${(props) => props.radius};
+  border: ${(props) => props.border};
+  outline: ${(props) => props.outline};
 `;
