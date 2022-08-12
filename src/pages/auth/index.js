@@ -26,10 +26,15 @@ const Index = () => {
   };
 
   const handleClick = () => {
+    if (!user) return toast("please enter username");
     setLoading(true);
+
     if (userName && userId) {
-      if (userName.toLowerCase() !== user.toLowerCase())
-        return toast("you do not belong to this chat!");
+      if (userName.toLowerCase() !== user.toLowerCase()) {
+        setLoading(false);
+        return toast("Incorrect username!");
+      }
+
       dispatch(signIn({ userName, userId }));
     } else {
       dispatch(signIn({ userName: user, userId: uuidv4() }));
@@ -44,7 +49,7 @@ const Index = () => {
   };
   return (
     <MainLayout>
-      <ToastContainer limit={1} />
+      <ToastContainer limit={3} />
       <Container>
         <Typography
           fontFamily={"Raleway"}
@@ -75,6 +80,7 @@ const Index = () => {
             width="32rem"
             borderRadius="1.5rem"
             bgColor={color.brand1}
+            loading={loading}
             btnText={
               <Typography fontFamily={"Raleway"} fontWeight="bold">
                 Enter

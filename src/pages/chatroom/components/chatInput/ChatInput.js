@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Typography } from "@mui/material";
+import { RiSendPlaneFill } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
 
 import Input from "components/input/Input";
 import Button from "components/button/Button";
 import { color } from "theme";
+import { addChat } from "store/actions/chat";
+import { getTime } from "utils";
 
 const ChatInput = () => {
+  const [message, setMessage] = useState();
+  const { userId } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  console.log(getTime());
+
+  const handleClick = () => {
+    setMessage("");
+    dispatch(addChat({ id: userId, message, time: getTime() }));
+  };
+
+  const handleChange = (e) => {
+    setMessage(e.target.value);
+  };
+
   return (
     <Container>
       <Input
@@ -17,22 +35,16 @@ const ChatInput = () => {
         placeholder="Type a message"
         padding="0 1rem"
         background={color.brand2}
+        value={message}
+        onChange={handleChange}
       />
       <Button
         bgColor={color.brand3}
-        btnText={
-          <Typography
-            fontWeight={"bold"}
-            fontFamily="Raleway"
-            fontSize={"14px"}
-            letterSpacing={0.7}
-          >
-            Send
-          </Typography>
-        }
+        btnText={<RiSendPlaneFill color={color.white} size={"1.5rem"} />}
         height="4rem"
         width="4rem"
         borderRadius={"50%"}
+        onClick={handleClick}
       />
     </Container>
   );

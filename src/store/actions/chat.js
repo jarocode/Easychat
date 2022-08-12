@@ -1,6 +1,6 @@
 export const ADD_CHAT = "ADD_CHAT";
 
-export const AddChat = (data) => ({
+export const addChat = (data) => ({
   type: ADD_CHAT,
   data,
 });

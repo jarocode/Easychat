@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 import MainLayout from "layout/MainLayout";
 import { color } from "theme";
@@ -23,7 +24,8 @@ const chatData = [
   { id: 4, username: "Gundogan", chat: "Alright, thanks", time: "9:00pm" },
 ];
 
-const index = () => {
+const Index = () => {
+  const { chat, auth } = useSelector((state) => state);
   return (
     <MainLayout>
       <Container>
@@ -42,7 +44,7 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
 const Container = styled.div`
   width: 60%;
   height: 35rem;

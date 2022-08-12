@@ -5,7 +5,7 @@ export const initialState = [];
 const chatReducer = (state = initialState, action) => {
   switch (action.type) {
     case signInTypes.ADD_CHAT:
-      return [...state, action.data.chats];
+      return [...state, action.data];
 
     default:
       return state;
