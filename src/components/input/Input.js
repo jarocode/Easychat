@@ -4,23 +4,19 @@ import styled from "styled-components";
 
 const Input = (props) => {
   return (
-    <Container>
-      <StyledInput
-        {...props}
-        width={props.width}
-        height={props.height}
-        background={props.background}
-        border={props.border}
-        radius={props.radius}
-        padding={props.padding}
-      />
-    </Container>
+    <StyledInput
+      {...props}
+      width={props.width}
+      height={props.height}
+      background={props.background}
+      border={props.border}
+      radius={props.radius}
+      padding={props.padding}
+    />
   );
 };
 
 export default Input;
-
-const Container = styled.div``;
 
 const StyledInput = styled.input`
   outline: none !important;

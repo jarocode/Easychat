@@ -4,6 +4,7 @@ import styled from "styled-components";
 import MainLayout from "layout/MainLayout";
 import { color } from "theme";
 import ChatSection from "./components/chatSection/ChatSection";
+import ChatInput from "./components/chatInput/ChatInput";
 
 const chatData = [
   { id: 1, username: "You", chat: "how are you", time: "9:00pm" },
@@ -35,6 +36,7 @@ const index = () => {
             isUser={el.id === 1}
           />
         ))}
+        <ChatInput />
       </Container>
     </MainLayout>
   );
@@ -43,8 +45,11 @@ const index = () => {
 export default index;
 const Container = styled.div`
   width: 60%;
-  height: 40rem;
+  height: 35rem;
+  overflow: auto;
+  position: relative;
   background: ${color.white};
   padding: 3rem;
+  padding-bottom: 0;
   box-shadow: 0px 8px 13px rgba(0, 0, 0, 0.12);
 `;
