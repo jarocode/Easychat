@@ -6,7 +6,7 @@ import { color } from "theme";
 import ChatSection from "./components/chatSection/ChatSection";
 
 const chatData = [
-  { id: 1, username: "Bola", chat: "how are you", time: "9:00pm" },
+  { id: 1, username: "You", chat: "how are you", time: "9:00pm" },
   {
     id: 2,
     username: "Alfred",
@@ -15,7 +15,7 @@ const chatData = [
   },
   {
     id: 1,
-    username: "Bola",
+    username: "You",
     chat: "Eu ipsum Lorem tempor deserunt ullamco Lorem sit consectetur incididunt ",
     time: "9:00pm",
   },
@@ -32,6 +32,7 @@ const index = () => {
             message={el.chat}
             time={el.time}
             key={index}
+            isUser={el.id === 1}
           />
         ))}
       </Container>

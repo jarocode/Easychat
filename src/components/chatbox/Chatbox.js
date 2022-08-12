@@ -4,16 +4,14 @@ import { Typography } from "@mui/material";
 
 import { color } from "theme";
 
-const Chatbox = () => {
+const Chatbox = ({ message, time, isUser }) => {
   return (
-    <Container>
-      <Div>
-        {" "}
-        <Typography fontFamily="Raleway">hello this is a new chat </Typography>
+    <Container isUser={isUser}>
+      <Div isUser={isUser}>
+        <Typography fontFamily="Raleway">{message} </Typography>
       </Div>
-      <Typography fontFamily="Raleway" fontSize={"14px"}>
-        {" "}
-        9:00pm
+      <Typography fontFamily="Raleway" fontSize={"15px"} fontWeight="500">
+        {time}
       </Typography>
     </Container>
   );
@@ -21,14 +19,16 @@ const Chatbox = () => {
 
 export default Chatbox;
 
-const Container = styled.div``;
+const Container = styled.div`
+  order: ${(props) => (props.isUser ? 2 : 1)};
+`;
 
 const Div = styled.div`
   min-height: 2rem;
   min-width: 10rem;
   max-width: 30rem;
-  background: ${color.brand1};
+  background: ${(props) => (props.isUser ? color.brand1 : color.brand2)};
   padding: 1rem;
-  color: ${color.white};
+  color: ${(props) => (props.isUser ? color.white : color.brand1)};
   border-radius: 0px 10px 10px 10px;
 `;
