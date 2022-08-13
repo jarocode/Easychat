@@ -5,7 +5,7 @@ export const loadState = () => {
     if (serializedState === null) {
       return undefined;
     }
-    sessionStorage.removeItem("state");
+    localStorage.removeItem("state");
     return JSON.parse(serializedState);
   } catch (err) {
     return undefined;

@@ -8,7 +8,9 @@ import store from "store/store";
 import { saveState } from "utils";
 
 window.onbeforeunload = () => {
-  saveState(store.getState());
+  if (store.getState().auth.userId) {
+    saveState(store.getState());
+  }
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

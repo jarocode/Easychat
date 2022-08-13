@@ -9,7 +9,7 @@ import { color } from "theme";
 import { addChat } from "store/actions/chat";
 import { getTime } from "utils";
 
-const ChatInput = () => {
+const ChatInput = ({ setRenderCount }) => {
   const [message, setMessage] = useState();
   const { userId, userName } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -17,6 +17,7 @@ const ChatInput = () => {
   const handleClick = () => {
     setMessage("");
     dispatch(addChat({ id: userId, message, userName, time: getTime() }));
+    setRenderCount((prev) => prev + 1);
   };
 
   const handleChange = (e) => {

@@ -11,6 +11,7 @@ import ChatHeader from "./components/chatHeader/ChatHeader";
 
 const Index = () => {
   const { chat, auth } = useSelector((state) => state);
+  const [renderCount, setRenderCount] = React.useState(0);
   React.useEffect(() => {
     console.log(chat);
   }, [chat]);
@@ -34,7 +35,7 @@ const Index = () => {
             <NoChat />
           )}
         </Inner>
-        <ChatInput />
+        <ChatInput setRenderCount={setRenderCount} />
       </Container>
     </MainLayout>
   );
@@ -43,7 +44,7 @@ const Index = () => {
 export default Index;
 const Container = styled.div`
   width: 60%;
-  height: 35rem;
+  height: 45rem;
   overflow: auto;
   position: relative;
   background: ${color.white};

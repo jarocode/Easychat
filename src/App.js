@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import { Provider } from "react-redux";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/styles";
@@ -25,7 +30,13 @@ const App = () => {
               <Route
                 path="/chatroom"
                 exact
-                element={store.getState().auth.userId ? <ChatRoom /> : <Auth />}
+                element={
+                  // store.getState().auth.userId ? (
+                  <ChatRoom />
+                  // ) : (
+                  //   <Navigate replace to="/" />
+                  // )
+                }
               />
             </Routes>
           </Router>
