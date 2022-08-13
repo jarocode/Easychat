@@ -22,7 +22,11 @@ const App = () => {
           <Router>
             <Routes>
               <Route path="/" exact element={<Auth />} />
-              <Route path="/chatroom" exact element={<ChatRoom />} />
+              <Route
+                path="/chatroom"
+                exact
+                element={store.getState().auth.userId ? <ChatRoom /> : <Auth />}
+              />
             </Routes>
           </Router>
         </div>

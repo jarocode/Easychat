@@ -21,5 +21,6 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: ${(props) => (props.isUser ? "flex-end" : "flex-start")};
+
   padding-bottom: 2rem;
 `;

@@ -34,8 +34,9 @@ const Index = () => {
         // setLoading(false);
         // return toast("Incorrect username!");
         dispatch(signIn({ userName, userId }));
+      } else {
+        dispatch(signIn({ userName: user, userId: uuidv4() }));
       }
-      dispatch(signIn({ userName: user, userId: uuidv4() }));
     } else {
       dispatch(signIn({ userName: user, userId: uuidv4() }));
     }

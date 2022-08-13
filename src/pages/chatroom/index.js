@@ -7,12 +7,18 @@ import { color } from "theme";
 import ChatSection from "./components/chatSection/ChatSection";
 import ChatInput from "./components/chatInput/ChatInput";
 import NoChat from "./components/chatSection/NoChat";
+import ChatHeader from "./components/chatHeader/ChatHeader";
 
 const Index = () => {
   const { chat, auth } = useSelector((state) => state);
+  React.useEffect(() => {
+    console.log(chat);
+  }, [chat]);
+
   return (
     <MainLayout>
       <Container>
+        <ChatHeader />
         <Inner>
           {chat.length !== 0 ? (
             chat?.map((el, index) => (
@@ -41,7 +47,7 @@ const Container = styled.div`
   overflow: auto;
   position: relative;
   background: ${color.white};
-  padding: 3rem;
+
   padding-bottom: 0;
   box-shadow: 0px 8px 13px rgba(0, 0, 0, 0.12);
 `;
@@ -49,4 +55,5 @@ const Container = styled.div`
 const Inner = styled.div`
   width: 100%;
   height: 100%;
+  padding-top: 2rem;
 `;
