@@ -33,12 +33,16 @@ const Index = () => {
       if (userName.toLowerCase() === user.toLowerCase()) {
         // setLoading(false);
         // return toast("Incorrect username!");
-        dispatch(signIn({ userName, userId }));
+        dispatch(signIn({ userName, userId, client_token: uuidv4() }));
       } else {
-        dispatch(signIn({ userName: user, userId: uuidv4() }));
+        dispatch(
+          signIn({ userName: user, userId: uuidv4(), client_token: uuidv4() })
+        );
       }
     } else {
-      dispatch(signIn({ userName: user, userId: uuidv4() }));
+      dispatch(
+        signIn({ userName: user, userId: uuidv4(), client_token: uuidv4() })
+      );
     }
     setTimeout(() => {
       setLoading(false);

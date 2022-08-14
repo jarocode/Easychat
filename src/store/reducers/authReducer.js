@@ -3,6 +3,7 @@ import * as signInTypes from "store/actions/auth";
 export const initialState = {
   userId: "",
   userName: "",
+  client_token: "",
 };
 
 const authReducer = (state = initialState, action) => {
@@ -17,7 +18,7 @@ const authReducer = (state = initialState, action) => {
     case signInTypes.SIGN_OUT:
       return {
         ...state,
-        userId: action.data,
+        client_token: action.data,
       };
 
     default:

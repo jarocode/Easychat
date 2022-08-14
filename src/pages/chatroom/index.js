@@ -8,13 +8,16 @@ import ChatSection from "./components/chatSection/ChatSection";
 import ChatInput from "./components/chatInput/ChatInput";
 import NoChat from "./components/chatSection/NoChat";
 import ChatHeader from "./components/chatHeader/ChatHeader";
+import { saveState } from "utils";
 
 const Index = () => {
   const { chat, auth } = useSelector((state) => state);
   const [renderCount, setRenderCount] = React.useState(0);
+
   React.useEffect(() => {
-    console.log(chat);
-  }, [chat]);
+    saveState({ auth, chat });
+    console.log("state", { auth, chat });
+  }, [renderCount]);
 
   return (
     <MainLayout>

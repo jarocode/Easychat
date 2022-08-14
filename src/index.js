@@ -5,13 +5,22 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "store/store";
+import { addAllChats, addChat } from "store/actions/chat";
 import { saveState } from "utils";
 
 window.onbeforeunload = () => {
-  if (store.getState().auth.userId) {
-    saveState(store.getState());
-  }
+  // if (store.getState().auth.userId) {
+  saveState(store.getState());
+  // }
 };
+
+window.addEventListener("storage", (event) => {
+  if (event.storageArea != localStorage) return;
+  if (event.key === "state") {
+    console.log("newValue", JSON.parse(event.newValue).chat);
+    store.dispatch(addAllChats(JSON.parse(event.newValue).chat));
+  }
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -18,7 +18,7 @@ const ChatHeader = () => {
   return (
     <Container>
       <NameDiv>
-        <Avatar />
+        <Avatar>{userName.charAt(0).toUpperCase()}</Avatar>
         <Typography fontFamily={"Raleway"} fontSize="18px" color={color.white}>
           {userName}
         </Typography>

@@ -6,7 +6,9 @@ import Chatbox from "components/chatbox/Chatbox";
 const ChatContainer = ({ username, message, time, isUser }) => {
   return (
     <Container>
-      <Avatar style={{ order: isUser ? 2 : 1 }} />
+      <Avatar style={{ order: isUser ? 2 : 1 }}>
+        {/* {username.charAt(0).toUpperCase()} */}N
+      </Avatar>
       <Chatbox message={message} time={time} isUser={isUser} />
     </Container>
   );
