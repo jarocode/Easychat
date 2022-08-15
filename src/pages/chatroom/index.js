@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 
 import MainLayout from "layout/MainLayout";
 import { color } from "theme";
+import { AuthContext } from "context/AuthContext";
 import ChatSection from "./components/chatSection/ChatSection";
 import ChatInput from "./components/chatInput/ChatInput";
 import NoChat from "./components/chatSection/NoChat";
@@ -12,11 +13,21 @@ import { saveState } from "utils";
 
 const Index = () => {
   const { chat, auth } = useSelector((state) => state);
+  const { loggedInUser } = useContext(AuthContext);
   const [renderCount, setRenderCount] = React.useState(0);
+  const initial = useRef(false);
+
+  const currentUserId = auth.find(
+    (user) => user.userName === loggedInUser
+  ).userId;
 
   React.useEffect(() => {
-    saveState({ auth, chat });
-    console.log("state", { auth, chat });
+    if (initial) {
+      saveState({ auth, chat });
+      console.log("state", { auth, chat });
+    } else {
+      initial.current = true;
+    }
   }, [renderCount]);
 
   return (
@@ -31,7 +42,7 @@ const Index = () => {
                 message={el.message}
                 time={el.time}
                 key={index}
-                isUser={el.id === auth.find((user) => user.userId === el.id)}
+                isUser={el.id === currentUserId}
               />
             ))
           ) : (

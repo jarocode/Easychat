@@ -1,19 +1,10 @@
 import * as signInTypes from "store/actions/auth";
 
-export const initialState = {
-  userId: "",
-  userName: "",
-  client_token: "",
-};
+export const initialState = [];
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case signInTypes.SIGN_IN:
-      return {
-        ...state,
-        userId: action.data.userId,
-        userName: action.data.userName,
-      };
       return [
         ...state,
         {

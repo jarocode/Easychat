@@ -6,6 +6,6 @@ export const addChat = (data) => ({
   data,
 });
 export const addAllChats = (data) => ({
-  type: ADD_CHAT,
+  type: ADD_ALL_CHATS,
   data,
 });

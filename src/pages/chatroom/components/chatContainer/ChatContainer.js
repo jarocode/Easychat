@@ -7,7 +7,7 @@ const ChatContainer = ({ username, message, time, isUser }) => {
   return (
     <Container>
       <Avatar style={{ order: isUser ? 2 : 1 }}>
-        {/* {username.charAt(0).toUpperCase()} */}N
+        {username?.charAt(0).toUpperCase()}
       </Avatar>
       <Chatbox message={message} time={time} isUser={isUser} />
     </Container>

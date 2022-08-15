@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 
 import Input from "components/input/Input";
+import { AuthContext } from "context/AuthContext";
 import Button from "components/button/Button";
 import { color } from "theme";
 import { addChat } from "store/actions/chat";
@@ -11,12 +12,24 @@ import { getTime } from "utils";
 
 const ChatInput = ({ setRenderCount }) => {
   const [message, setMessage] = useState();
-  const { userId, userName } = useSelector((state) => state.auth);
+  const { loggedInUser } = useContext(AuthContext);
+  const authenticatedUsers = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  const currentUser = authenticatedUsers.find(
+    (user) => user.userName === loggedInUser
+  );
 
   const handleClick = () => {
     setMessage("");
-    dispatch(addChat({ id: userId, message, userName, time: getTime() }));
+    dispatch(
+      addChat({
+        id: currentUser.userId,
+        userName: currentUser.userName,
+        message,
+        time: getTime(),
+      })
+    );
     setRenderCount((prev) => prev + 1);
   };
 

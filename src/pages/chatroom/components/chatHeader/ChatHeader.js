@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Avatar, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,21 +6,29 @@ import { useNavigate } from "react-router-dom";
 
 import { color } from "theme";
 import { signOut } from "store/actions/auth";
+import { AuthContext } from "context/AuthContext";
 
 const ChatHeader = () => {
   const dispatch = useDispatch();
-  const { userName } = useSelector((state) => state.auth);
+  const { loggedInUser } = useContext(AuthContext);
+  const authenticatedUsers = useSelector((state) => state.auth);
   const navigate = useNavigate();
+
+  const currentUser = authenticatedUsers.find(
+    (user) => user.userName === loggedInUser
+  ).userName;
+
   const handleClick = () => {
     dispatch(signOut(""));
     navigate("/");
   };
+
   return (
     <Container>
       <NameDiv>
-        <Avatar>{userName.charAt(0).toUpperCase()}</Avatar>
+        <Avatar>{currentUser.charAt(0).toUpperCase()}</Avatar>
         <Typography fontFamily={"Raleway"} fontSize="18px" color={color.white}>
-          {userName}
+          {currentUser}
         </Typography>
       </NameDiv>
       <SignOut
