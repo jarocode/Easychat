@@ -31,7 +31,7 @@ const Index = () => {
                 message={el.message}
                 time={el.time}
                 key={index}
-                isUser={el.id === auth.userId}
+                isUser={el.id === auth.find((user) => user.userId === el.id)}
               />
             ))
           ) : (

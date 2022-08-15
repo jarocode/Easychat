@@ -8,6 +8,7 @@ import {
 import { Provider } from "react-redux";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/styles";
+import { AuthProvider } from "context/AuthContext";
 
 import ChatRoom from "pages/chatroom";
 import Auth from "pages/auth";
@@ -22,26 +23,28 @@ const theme = createTheme({
 const App = () => {
   return (
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <div>
-          <Router>
-            <Routes>
-              <Route path="/" exact element={<Auth />} />
-              <Route
-                path="/chatroom"
-                exact
-                element={
-                  // store.getState().auth.userId ? (
-                  <ChatRoom />
-                  // ) : (
-                  //   <Navigate replace to="/" />
-                  // )
-                }
-              />
-            </Routes>
-          </Router>
-        </div>
-      </ThemeProvider>
+      <AuthProvider>
+        <ThemeProvider theme={theme}>
+          <div>
+            <Router>
+              <Routes>
+                <Route path="/" exact element={<Auth />} />
+                <Route
+                  path="/chatroom"
+                  exact
+                  element={
+                    // store.getState().auth.userId ? (
+                    <ChatRoom />
+                    // ) : (
+                    //   <Navigate replace to="/" />
+                    // )
+                  }
+                />
+              </Routes>
+            </Router>
+          </div>
+        </ThemeProvider>
+      </AuthProvider>
     </Provider>
   );
 };

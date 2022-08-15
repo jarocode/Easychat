@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import MainLayout from "layout/MainLayout";
 import Input from "components/input/Input";
+import { AuthContext } from "context/AuthContext";
 import { color } from "theme";
 import Button from "components/button/Button";
 import { signIn } from "store/actions/auth";
@@ -16,10 +17,11 @@ import { signIn } from "store/actions/auth";
 const Index = () => {
   const [loading, setLoading] = useState();
   const [user, setUser] = useState();
+  const { setLoggedInUser } = useContext(AuthContext);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { userId, userName } = useSelector((state) => state.auth);
+  const authenticatedUsers = useSelector((state) => state.auth);
 
   const handleChange = (e) => {
     setUser(e.target.value);
@@ -28,22 +30,17 @@ const Index = () => {
   const handleClick = () => {
     if (!user) return toast("please enter username");
     setLoading(true);
+    setLoggedInUser(user);
 
-    if (userName && userId) {
-      if (userName.toLowerCase() === user.toLowerCase()) {
-        // setLoading(false);
-        // return toast("Incorrect username!");
-        dispatch(signIn({ userName, userId, client_token: uuidv4() }));
-      } else {
-        dispatch(
-          signIn({ userName: user, userId: uuidv4(), client_token: uuidv4() })
-        );
-      }
-    } else {
+    const existingUser = authenticatedUsers.find(
+      (user) => user.userName === user
+    );
+
+    if (!existingUser)
       dispatch(
         signIn({ userName: user, userId: uuidv4(), client_token: uuidv4() })
       );
-    }
+
     setTimeout(() => {
       setLoading(false);
       toast("Logged in Successfully!");
