@@ -1,13 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import store from "store/store";
+import { AuthProvider } from "context/AuthContext";
+import { addAllChats } from "store/actions/chat";
+import { saveState } from "utils";
+
+window.onbeforeunload = () => {
+  // if (store.getState().auth.userId) {
+  saveState(store.getState());
+  // }
+};
+
+window.addEventListener("storage", (event) => {
+  if (event.storageArea !== localStorage) return;
+  if (event.key === "state") {
+    let chat = JSON.parse(event.newValue).chat;
+    if (chat) {
+      console.log("newValue", chat);
+      store.dispatch(addAllChats(JSON.parse(event.newValue).chat));
+    }
+  }
+});
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </Provider>
   </React.StrictMode>
 );
 
