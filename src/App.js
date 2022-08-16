@@ -20,6 +20,7 @@ const theme = createTheme({
 
 const App = () => {
   const { loggedInUser } = useContext(AuthContext);
+
   return (
     <ThemeProvider theme={theme}>
       <div>

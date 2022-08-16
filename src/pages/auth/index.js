@@ -33,7 +33,7 @@ const Index = () => {
     setLoggedInUser(user);
 
     const existingUser = authenticatedUsers.find(
-      (user) => user.userName.toLowerCase() === user.toLowerCase()
+      (el) => el.userName.toLowerCase() === user.toLowerCase()
     );
 
     if (!existingUser)

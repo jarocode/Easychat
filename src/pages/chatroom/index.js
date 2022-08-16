@@ -21,14 +21,14 @@ const Index = () => {
     (user) => user.userName === loggedInUser
   ).userId;
 
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setRenderCount((prev) => prev + 1);
-    }, 1100);
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
+  // React.useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setRenderCount((prev) => prev + 1);
+  //   }, 1100);
+  //   return () => {
+  //     clearInterval(timer);
+  //   };
+  // }, []);
 
   React.useEffect(() => {
     if (initial) {

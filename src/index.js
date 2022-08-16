@@ -4,9 +4,9 @@ import { Provider } from "react-redux";
 
 import "./index.css";
 import App from "./App";
-import { AuthProvider } from "context/AuthContext";
 import reportWebVitals from "./reportWebVitals";
 import store from "store/store";
+import { AuthProvider } from "context/AuthContext";
 import { addAllChats } from "store/actions/chat";
 import { saveState } from "utils";
 
