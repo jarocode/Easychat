@@ -12,7 +12,7 @@ import { saveState } from "utils";
 
 window.onbeforeunload = () => {
   // if (store.getState().auth.userId) {
-  saveState(store.getState());
+  // saveState(store.getState());
   // }
 };
 

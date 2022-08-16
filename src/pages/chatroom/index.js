@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 
@@ -9,34 +9,14 @@ import ChatSection from "./components/chatSection/ChatSection";
 import ChatInput from "./components/chatInput/ChatInput";
 import NoChat from "./components/chatSection/NoChat";
 import ChatHeader from "./components/chatHeader/ChatHeader";
-import { saveState } from "utils";
 
 const Index = () => {
   const { chat, auth } = useSelector((state) => state);
   const { loggedInUser } = useContext(AuthContext);
-  const [renderCount, setRenderCount] = React.useState(0);
-  const initial = useRef(false);
 
   const currentUserId = auth.find(
     (user) => user.userName === loggedInUser
   ).userId;
-
-  // React.useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setRenderCount((prev) => prev + 1);
-  //   }, 1100);
-  //   return () => {
-  //     clearInterval(timer);
-  //   };
-  // }, []);
-
-  React.useEffect(() => {
-    if (initial) {
-      saveState({ auth, chat });
-    } else {
-      initial.current = true;
-    }
-  }, [renderCount]);
 
   return (
     <MainLayout>

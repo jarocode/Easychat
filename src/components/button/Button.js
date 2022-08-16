@@ -17,6 +17,7 @@ const Button = ({
   border,
   fontWeight,
   onClick,
+  onKeyPress,
   margin,
   fontFamily,
   padding,
@@ -38,6 +39,7 @@ const Button = ({
       margin={margin}
       fontWeight={fontWeight}
       onClick={onClick}
+      onKeyDown={onKeyPress}
     >
       {loading ? (
         <ButtonLoader isSubmitting={loading} />
