@@ -5,7 +5,7 @@ This is a simple React chapp
 ## Available Script
 
 
-In the project directory, clone the repository, and run:
+In the project , clone the repository, and run:
 
 ### `npm install`
 Installs all dependencies and creates a node modules folder.
