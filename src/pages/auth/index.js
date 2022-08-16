@@ -69,19 +69,20 @@ const Index = () => {
           </Typography>
           <Input
             height="3rem"
-            width="30rem"
+            width="100%"
             radius="1.5rem"
             border="none"
             placeholder="John doe"
-            onChange={handleChange}
             padding="0 1rem"
+            onChange={handleChange}
             background={color.brand2}
           />
           <Button
             height="3rem"
-            width="32rem"
+            width="105%"
             borderRadius="1.5rem"
             bgColor={color.brand1}
+            padding={"0 1rem"}
             loading={loading}
             btnText={
               <Typography fontFamily={"Raleway"} fontWeight="bold">
@@ -103,6 +104,7 @@ const Container = styled.div`
   height: 20rem;
   display: flex;
   flex-direction: column;
+
   align-items: center;
 `;
 const Div = styled.div`
@@ -110,6 +112,7 @@ const Div = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 3rem;
   gap: 1rem;
   width: 100%;
   height: 100%;

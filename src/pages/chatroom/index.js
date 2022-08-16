@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 
@@ -13,6 +13,11 @@ import ChatHeader from "./components/chatHeader/ChatHeader";
 const Index = () => {
   const { chat, auth } = useSelector((state) => state);
   const { loggedInUser } = useContext(AuthContext);
+  const viewRef = useRef();
+
+  useEffect(() => {
+    viewRef.current.scrollIntoView(false);
+  }, [chat]);
 
   const currentUserId = auth.find(
     (user) => user.userName === loggedInUser
@@ -23,19 +28,21 @@ const Index = () => {
       <Container>
         <ChatHeader />
         <Inner>
-          {chat.length !== 0 ? (
-            chat?.map((el, index) => (
-              <ChatSection
-                username={el.userName}
-                message={el.message}
-                time={el.time}
-                key={index}
-                isUser={el.id === currentUserId}
-              />
-            ))
-          ) : (
-            <NoChat />
-          )}
+          <div ref={viewRef}>
+            {chat.length !== 0 ? (
+              chat?.map((el, index) => (
+                <ChatSection
+                  username={el.userName}
+                  message={el.message}
+                  time={el.time}
+                  key={index}
+                  isUser={el.id === currentUserId}
+                />
+              ))
+            ) : (
+              <NoChat />
+            )}
+          </div>
         </Inner>
         <ChatInput />
       </Container>
@@ -54,6 +61,7 @@ const Container = styled.div`
 const Inner = styled.div`
   width: 100%;
   overflow: auto;
+  scroll-behavior: smooth;
   height: 25rem;
   padding-top: 2rem;
 `;

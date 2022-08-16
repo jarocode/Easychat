@@ -22,10 +22,10 @@ const StyledInput = styled.input`
   outline: none !important;
   font-family: "Raleway";
   font-size: 16px;
-  width: ${(props) => (props.width ? props.width : "100%")};
   height: ${(props) => props.height};
   background: ${(props) => props.background};
   border-radius: ${(props) => props.radius};
   border: ${(props) => props.border};
   padding: ${(props) => props.padding};
+  width: ${(props) => (props.width ? props.width : "100%")};
 `;
