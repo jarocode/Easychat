@@ -7,7 +7,7 @@ const chatReducer = (state = initialState, action) => {
     case signInTypes.ADD_CHAT:
       return [...state, action.data];
     case signInTypes.ADD_ALL_CHATS:
-      return [...state, ...action.data];
+      return action.data;
 
     default:
       return state;

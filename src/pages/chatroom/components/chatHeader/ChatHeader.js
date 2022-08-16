@@ -1,26 +1,21 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { Avatar, Typography } from "@mui/material";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { color } from "theme";
-import { signOut } from "store/actions/auth";
 import { AuthContext } from "context/AuthContext";
 
 const ChatHeader = () => {
-  const dispatch = useDispatch();
-  const { loggedInUser } = useContext(AuthContext);
+  const { loggedInUser, setLoggedInUser } = useContext(AuthContext);
   const authenticatedUsers = useSelector((state) => state.auth);
-  const navigate = useNavigate();
 
   const currentUser = authenticatedUsers.find(
     (user) => user.userName === loggedInUser
   ).userName;
 
   const handleClick = () => {
-    dispatch(signOut(""));
-    navigate("/");
+    setLoggedInUser("");
   };
 
   return (

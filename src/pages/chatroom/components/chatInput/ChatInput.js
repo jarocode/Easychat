@@ -10,7 +10,7 @@ import { color } from "theme";
 import { addChat } from "store/actions/chat";
 import { getTime } from "utils";
 
-const ChatInput = ({ setRenderCount }) => {
+const ChatInput = () => {
   const [message, setMessage] = useState();
   const { loggedInUser } = useContext(AuthContext);
   const authenticatedUsers = useSelector((state) => state.auth);
@@ -30,7 +30,6 @@ const ChatInput = ({ setRenderCount }) => {
         time: getTime(),
       })
     );
-    setRenderCount((prev) => prev + 1);
   };
 
   const handleChange = (e) => {

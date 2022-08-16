@@ -5,7 +5,3 @@ export const signIn = (data) => ({
   type: SIGN_IN,
   data,
 });
-export const signOut = (data) => ({
-  type: SIGN_OUT,
-  data,
-});

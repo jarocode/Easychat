@@ -22,9 +22,17 @@ const Index = () => {
   ).userId;
 
   React.useEffect(() => {
+    const timer = setInterval(() => {
+      setRenderCount((prev) => prev + 1);
+    }, 1100);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  React.useEffect(() => {
     if (initial) {
       saveState({ auth, chat });
-      console.log("state", { auth, chat });
     } else {
       initial.current = true;
     }
@@ -49,7 +57,7 @@ const Index = () => {
             <NoChat />
           )}
         </Inner>
-        <ChatInput setRenderCount={setRenderCount} />
+        <ChatInput />
       </Container>
     </MainLayout>
   );

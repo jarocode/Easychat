@@ -14,11 +14,6 @@ const authReducer = (state = initialState, action) => {
         },
       ];
 
-    case signInTypes.SIGN_OUT:
-      return {
-        ...state,
-      };
-
     default:
       return state;
   }
