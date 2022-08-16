@@ -43,18 +43,14 @@ const ChatHeader = () => {
 export default ChatHeader;
 
 const Container = styled.div`
-  width: 94.05%;
-  position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  top: 0;
-  left: 0;
   height: 5rem;
   z-index: 1000;
   background: ${color.brand1};
   border-radius: 10px 10px 0 0;
-  padding: 2rem 2rem;
+  padding: 0rem 2rem;
 `;
 
 const NameDiv = styled.div`

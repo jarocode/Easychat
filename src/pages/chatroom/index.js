@@ -45,18 +45,15 @@ const Index = () => {
 
 export default Index;
 const Container = styled.div`
-  width: 60%;
-  height: 45rem;
-  overflow: auto;
-  position: relative;
+  width: 60rem;
+  height: 40rem;
   background: ${color.white};
-
-  padding-bottom: 0;
   box-shadow: 0px 8px 13px rgba(0, 0, 0, 0.12);
 `;
 
 const Inner = styled.div`
   width: 100%;
-  height: 100%;
+  overflow: auto;
+  height: 25rem;
   padding-top: 2rem;
 `;

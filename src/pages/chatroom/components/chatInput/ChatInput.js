@@ -67,13 +67,12 @@ export default ChatInput;
 
 const Container = styled.div`
   width: 100%;
-  position: sticky;
   display: flex;
   gap: 1rem;
   bottom: 0;
   left: 0;
+  padding: 1rem 0;
   align-items: center;
   justify-content: center;
-  height: 8rem;
   background: ${color.white};
 `;
