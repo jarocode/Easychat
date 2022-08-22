@@ -1,16 +1,16 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 
 import { AuthProvider } from "context/AuthContext";
 import store from "store/store";
-import ChatSection from "./ChatSection";
+import ChatInput from "./ChatInput";
 
-describe("chatSection component", () => {
-  it("chatSection renders", () => {
+describe("chatInput component", () => {
+  it("chatInput renders", () => {
     render(
       <Provider store={store}>
         <AuthProvider>
-          <ChatSection />
+          <ChatInput />
         </AuthProvider>
       </Provider>
     );
