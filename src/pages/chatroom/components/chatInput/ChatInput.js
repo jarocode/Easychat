@@ -56,7 +56,7 @@ const ChatInput = () => {
         height="4rem"
         width="4rem"
         borderRadius={"50%"}
-        onKeyPress={(e) => (e.key === "Enter" ? handleClick() : null)}
+        onKeyPress={(e) => (e.keyCode === 13 ? handleClick() : null)}
         onClick={handleClick}
       />
     </Container>

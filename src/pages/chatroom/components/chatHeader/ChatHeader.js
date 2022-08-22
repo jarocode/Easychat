@@ -11,7 +11,7 @@ const ChatHeader = () => {
   const authenticatedUsers = useSelector((state) => state.auth);
 
   const currentUser = authenticatedUsers.find(
-    (user) => user.userName === loggedInUser
+    (user) => user?.userName === loggedInUser
   ).userName;
 
   const handleClick = () => {
